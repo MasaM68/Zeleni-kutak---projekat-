@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zeleni Kutak – digitalna prodavnica biljaka</title>
+    <meta name="description" content="Prototip korisničkog interfejsa digitalne prodavnice biljaka: pretraga, rezervacija, korpa rezervacija, ocene i profil kupca.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,650&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="zaglavlje">
+        <div class="zaglavlje-unutra">
+            <a class="logo" href="#/" aria-label="Zeleni Kutak – početna">
+                <span class="logo-znak" aria-hidden="true">🌿</span>
+                <span>Zeleni Kutak</span>
+            </a>
+
+            <nav class="glavna-nav" aria-label="Glavna navigacija">
+                <a href="#/" data-ruta="">Početna</a>
+                <a href="#/biljke" data-ruta="biljke">Biljke</a>
+                <a href="#/korpa" data-ruta="korpa" class="nav-korpa">
+                    <span aria-hidden="true">🛒</span> Korpa rezervacija
+                    <span class="znacka" id="brojUKorpi" aria-label="broj biljaka u korpi">0</span>
+                </a>
+            </nav>
+
+            <div class="korisnik-zona" id="korisnikZona"></div>
+        </div>
+    </header>
+
+    <main id="aplikacija" tabindex="-1">
+        <div class="ucitavanje">
+            <div class="ucitavanje-krug" aria-hidden="true"></div>
+            <p>Učitavanje biljaka…</p>
+        </div>
+    </main>
+
+    <footer class="podnozje">
+        <div class="podnozje-unutra">
+            <div>
+                <strong class="logo">🌿 Zeleni Kutak</strong>
+                <p>Radnja: Zmaj Jovina 12, Novi Sad · 021 123 456 · podrska@zelenikutak.rs</p>
+            </div>
+            <div class="podnozje-desno">
+                <p id="izvorPodataka">Podaci o biljkama: plants.pequla.com</p>
+                <button class="dugme-tekst" data-akcija="vratiDemo">↺ Vrati demo podatke</button>
+            </div>
+        </div>
+        <p class="podnozje-potpis">© 2026 Zeleni Kutak · Studentski prototip korisničkog interfejsa · Maša Milosavljević-2022202068</p> 
+    </footer>
+
+    <!-- Dijalozi (modali) -->
+    <div id="modalSloj" class="modal-sloj" hidden>
+        <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalNaslov" id="modal"></div>
+    </div>
+
+    <!-- Obaveštenja -->
+    <div class="obavestenja" id="obavestenja" aria-live="polite"></div>
+
+    <!-- Virtuelni asistent -->
+    <button class="agent-dugme" id="agentDugme" data-akcija="agent" aria-controls="agentPanel" aria-expanded="false">
+        <span class="agent-lice" aria-hidden="true">🌱</span>
+        <span>Pitajte Zelenka</span>
+    </button>
+
+    <section class="agent-panel" id="agentPanel" aria-label="Virtuelni asistent Zelenko" hidden>
+        <header class="agent-zaglavlje">
+            <span class="agent-lice veliko" aria-hidden="true">🌱</span>
+            <div>
+                <strong>Zelenko</strong>
+                <small>Virtuelni asistent</small>
+            </div>
+            <button class="agent-akcija" data-akcija="agentIspocetka" title="Započni razgovor ispočetka" aria-label="Započni razgovor ispočetka">↺</button>
+            <button class="agent-akcija" data-akcija="agent" title="Zatvori" aria-label="Zatvori asistenta">✕</button>
+        </header>
+        <div class="agent-poruke" id="agentPoruke" aria-live="polite"></div>
+        <div class="agent-opcije" id="agentOpcije"></div>
+    </section>
+
+    <script src="data/biljke-api-kopija.js"></script>
+    <script src="podaci.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
